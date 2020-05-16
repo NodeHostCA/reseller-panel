@@ -1,0 +1,5 @@
+{
+  "nodehost_api_key": "API_KEY_HERE",
+  "panel_password": "PASSWORD_TO_MAKE_API_CALLS_TO_THIS_PANEL",
+  "session_expire": 86400
+}

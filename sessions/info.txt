@@ -1,0 +1,9 @@
+Sessions are created in this folder and do expire
+You can manually create the session file (standard JSON) or use the API to make a backend call and create the session
+
+{
+  "id": "ID_SAME_AS_FILE_NAME",
+  "container_id": "CONTAINER_ID",
+  "expire": "DATE_IN_UNIX_OF_EXPIRE",
+  "auth_hash": "LEAVE_BLANK"
+}
