@@ -24,6 +24,7 @@ $nh_panel_settings["nodehost_api_key"]="";
 $nh_panel_settings["panel_password"]="";
 $nh_panel_settings["session_expire"]="";
 
+//Load Settings Files
 if (is_file("/config/settings.json")){
   $mergesettings=file_get_contents("/config/settings.json");
   $mergesettings=json_decode($mergesettings,true);
@@ -85,9 +86,10 @@ if ($nh_panel_session["expire"]<=timestamp()){
 //##############################################################
 
 if (!is_file("/sessions/".$nh_panel_session.".json")){
-  $fp = fopen("/sessions/".$nh_panel_session.".json", 'w');
-  fwrite($fp, json_encode($nh_panel_session,JSON_PRETTY_PRINT));
-  fclose($fp);
+  //Create session file, but first we must do a check for API validation before we just CREATE a session file
+  //$fp = fopen("/sessions/".$nh_panel_session.".json", 'w');
+  //fwrite($fp, json_encode($nh_panel_session,JSON_PRETTY_PRINT));
+  //fclose($fp);
 }
 
 if (is_file("/sessions/".$nh_panel_session.".json")){
