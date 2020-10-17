@@ -4,43 +4,15 @@
 //############################################################## - Functions
 //##############################################################
 
-function user_hash(){
-  //Hash is generated using users useragent and cookies to build an identifier
-  //This is used to validate the users session
-  $hash=$_SERVER['HTTP_USER_AGENT'];
-  foreach ($_COOKIE as $key=>$val){
-    $keysave=true;
-    if (strpos($key,'wp-settings-time')!==false){
-      $keysave=false;
-    }
-    if (strpos($key,'__cfduid')!==false){
-      $keysave=false;
-    }
-    if (strpos($key,'__gads')!==false){
-      $keysave=false;
-    }
-    if (strpos($key,'_ga')!==false){
-      $keysave=false;
-    }
-    if (strpos($key,'_gat_gtag')!==false){
-      $keysave=false;
-    }
-    if (strpos($key,'_gid')!==false){
-      $keysave=false;
-    }
-    if (strpos($key,'PHPSESSID')!==false){
-      $keysave=false;
-    }
-    if ($keysave==true){
-      $hash="".$hash."/".$key."-".$val."";
-    }
-  }
-  return sha1($hash);
-}
+include "includes/functions.php";
 
 //##############################################################
 //############################################################## - Startup
 //##############################################################
+
+ini_set('display_errors', '0');
+ini_set('date.timezone', 'America/New_York');
+session_start();
 
 $nh_panel_url=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $nh_panel_session=$_GET["session"];
